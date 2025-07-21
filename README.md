@@ -42,13 +42,67 @@ Tool
 
 > 최대 비트가 15비트를 넘지않도록 설정
 
-### Round Saturation 방식
+## Round Saturation 방식
 - 소수부: Truncation
   - fi: RoundingMethod = Zero
 - Overflow: Saturation
   - fi: OverflowAction = Saturation
 
+## 🥊결과 비교: Floating Vs Fixed
 
+### 1️⃣Floating
+
+|                     Mod0                     |                     Mod1                     |                     Mod2                     |
+| :------------------------------------------: | :------------------------------------------: | :------------------------------------------: |
+| <img src="./img/floating/floating_mod0.png"> | <img src="./img/floating/floating_mod1.png"> | <img src="./img/floating/floating_mod2.png"> |
+
+### 2️⃣Fixed
+
+|                  Mod0                  |                  Mod1                  |                  Mod2                  |
+| :------------------------------------: | :------------------------------------: | :------------------------------------: |
+| <img src="./img/fixed/fixed_mod0.png"> | <img src="./img/fixed/fixed_mod1.png"> | <img src="./img/fixed/fixed_mod2.png"> |
+
+> Mod1까지는 비슷한 양상으로 가다, Mode2의 허수부에서 차이가 보이기 시작한다
+
+### 🔎Detail
+
+|                 Magnitude Compare                 |
+| :-----------------------------------------------: |
+| <img src="./img/fixed/magnitude_compare.png"><br> |
+
+> 비슷한 양상을 보이며 겹치는 것을 확인
+
+|        Error Between Floating Vs Fixed        |
+| :-------------------------------------------: |
+| <img src="./img/fixed/error_compare.png"><br> |
+
+> Absolute Error가 평균 0.5이하로 존재하는 것을 확인할 수 있다.
+
+
+## SQNR
+
+> SQNR = $10log(P_Signal/P_Noise)$
+> > SQNR이 클수록 신호의 세기가 크다
+
+### 📈Cosine
+
+|                 SQNR_Cosine                 |
+| :-----------------------------------------: |
+| <img src="./img/fixed/SQNR_cosine.png"><br> |
+|                   45.34dB                   |
+
+### 🔢Random
+
+|                 SQNR_Random                 |
+| :-----------------------------------------: |
+| <img src="./img/fixed/SQNR_random.png"><br> |
+|                 mean = 38dB                 |
+
+> Random의 경우 38dB에서 왔다갔다 하는 정도
+
+## ⚠️Notice
+
+- 
 
 # 3. CBFP -  Fixed Point SQNR Solution
 
