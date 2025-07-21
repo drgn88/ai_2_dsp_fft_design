@@ -1,7 +1,7 @@
 # 🙋‍♂️Who Made?
 
-|                                             Hyenwoo Choi                                             |
-| :--------------------------------------------------------------------------------------------------: |
+|                                                                                                      Hyenwoo Choi                                                                                                      |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | [<img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F20675B4C50BA149F1B" width=200 height=150> </br> @HyenWoo Choi](https://github.com/drgn88) |
 
 # 🏕️Development Environment
@@ -15,8 +15,7 @@ Language
 Tool
 - VCS & Verdi
 - Matlab
-- Vivado(Verification)
-  - Verdi랑 차이 비교해볼려고 여기서도 돌려봄
+- Verdi랑 차이 비교해볼려고 여기서도 돌려봄
 
 # 1. Floating Point Design
 
@@ -27,9 +26,31 @@ Tool
 
 - 입력: Q<3.6>
 - Twiddle Factor: Q<2.7>
-- 출력: Q<>
+- 출력: Q<9.4>
 
-# CBFP -  Fixed Point SQNR Solution
+| Module0 | step0_0 | step0_1 | step0_2 |
+| :-----: | :-----: | :-----: | :-----: |
+| &nbsp;  | Q<4.6>  | Q<6.6>  | Q<7.6>  |
+
+| Module1 | step1_0 | step1_1 | step1_2 |
+| :-----: | :-----: | :-----: | :-----: |
+| &nbsp;  | Q<8.6>  | Q<8.6>  | Q<7.6>  |
+
+| Module2 | step2_0 | step2_1 | step2_2 |
+| :-----: | :-----: | :-----: | :-----: |
+| &nbsp;  | Q<8.6>  | Q<8.6>  | Q<9.4>  |
+
+> 최대 비트가 15비트를 넘지않도록 설정
+
+### Round Saturation 방식
+- 소수부: Truncation
+  - fi: RoundingMethod = Zero
+- Overflow: Saturation
+  - fi: OverflowAction = Saturation
+
+
+
+# 3. CBFP -  Fixed Point SQNR Solution
 
 ## 기존: 단계별 Fixed Point
 - 기존 FFT에 고정소수점 연산 경우
